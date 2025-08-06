@@ -1,1 +1,1 @@
-# top-calculator
+This project is a calculator that used guidance from The Odin Project.

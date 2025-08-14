@@ -133,5 +133,40 @@
         }
     }
 
+    function handleKeys() {
+        window.addEventListener("keydown", (event) => {
+            const key = event.key;
+            let buttonToPress = null;
+
+            const keyMap = {
+                "Enter": "=",
+                "Backspace": "BACK",
+                "Escape": "CLEAR",
+                "1": "1", "2": "2", "3": "3",
+                "4": "4", "5": "5", "6": "6",
+                "7": "7", "8": "8", "9": "9",
+                "0": "0", ".": ".", "/": "/",
+                "*": "*", "-": "-", "+": "+"
+            };
+
+            const buttonText = keyMap[key];
+
+            if (buttonText) {
+                const allButtons = document.querySelectorAll(".button, .tall-button, .wide-button");
+                allButtons.forEach(button => {
+                    if (button.textContent === buttonText) {
+                        buttonToPress = button;
+                    }
+                });
+            }
+
+            if (buttonToPress) {
+                event.preventDefault();
+                buttonToPress.click();
+            }
+        })
+    }
+
     createButtons();
+    handleKeys();
 }) ();
